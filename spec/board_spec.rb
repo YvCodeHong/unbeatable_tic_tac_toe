@@ -19,5 +19,9 @@ describe Board do
       board.take_turn(0, "X")
       expect(board.take_turn(0, "O")).to eq "Illegal move"
     end
+
+    it "should not allow the user to place their marker somewhere that is not in the spaces array" do
+     expect(board.take_turn(9, "X")).to eq "Illegal move"
+    end
   end
 end
