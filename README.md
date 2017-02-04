@@ -9,3 +9,7 @@ The goal:
 * user chooses game type (human v. computer, human v. human, or computer v. computer)
 * computer player should never lose and should win whenever possible
 * user should also have the choice of which player goes first
+
+Resources I used to understand the minimax algorithm:
+http://www.shei.io/recursion-minimax-algorithm/
+http://malcolmnewsome.com/post/74172036027/unbeatable-tic-tac-toe-with-minimax
