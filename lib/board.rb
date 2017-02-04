@@ -1,3 +1,5 @@
+# Determines the winner by storing the moves
+
 class Board
 
   attr_reader :spaces, :winner

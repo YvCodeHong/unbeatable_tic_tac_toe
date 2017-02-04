@@ -1,3 +1,5 @@
+# Controls the AI
+
 class Computer
 
   attr_reader :marker
