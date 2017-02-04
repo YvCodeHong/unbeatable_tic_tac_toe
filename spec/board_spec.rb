@@ -31,9 +31,27 @@ describe Board do
   end
 
   context "Winning - The board" do
-    it "should know when a game has been won" do
+    xit "should know when a game has been won" do
       x_wins
       expect(board.winner).to eq "X"
+    end
+  end
+
+  context "Winning situations" do
+    it "allows a row to win" do
+      expect(board.winning_rows).to eq([[0,1,2], [3,4,5], [6,7,8]])
+    end
+
+    it "allows a column to win" do
+      expect(board.winning_columns).to eq([[0,3,6], [1,4,7], [2,5,8]])
+    end
+
+    it "allows diagonals to win" do
+      expect(board.winning_diagonals).to eq([[0,4,7], [2,4,6]])
+    end
+
+    it "can see all the winning options together" do
+      expect(board.all_winning_possibilities).to eq [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 7], [2, 4, 6]]
     end
   end
 end

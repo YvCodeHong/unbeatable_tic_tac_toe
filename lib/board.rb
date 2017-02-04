@@ -11,6 +11,28 @@ class Board
     @spaces[space] = player
   end
 
+  def game_won?(player)
+    @winner = player
+  end
+
+  def winning_rows
+    @spaces.each_slice(3).to_a
+  end
+
+  def winning_columns
+    winning_rows.transpose
+  end
+
+  def winning_diagonals
+    [[0,4,7], [2,4,6]]
+  end
+
+  def all_winning_possibilities
+    winning_rows + winning_columns + winning_diagonals
+  end
+
+
+
   private
 
   def space_taken(space)
@@ -24,5 +46,7 @@ class Board
   def illegal_moves(space)
     space_taken(space) || outside_of_array(space)
   end
+
+
 
 end
