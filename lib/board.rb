@@ -11,13 +11,6 @@ class Board
     @spaces[space] = player
   end
 
-  def game_won?(player)
-    all_winning_possibilities.any?  do |possibility|
-       possibility.count(player) == 3
-       @winner = player
-     end
-  end
-
   def winning_rows
     @spaces.each_slice(3).to_a
   end
@@ -35,6 +28,15 @@ class Board
 
   def all_winning_possibilities
     winning_rows + winning_columns + winning_diagonals
+  end
+
+  def game_won?(player)
+    if check_game(player) != []
+      @winner = player
+      true
+    else
+      false
+    end
   end
 
 
@@ -57,6 +59,11 @@ class Board
     @winner = player
   end
 
+  def check_game(player)
+    all_winning_possibilities.select do |possibility|
+      possibility == [player, player, player]
+    end
+  end
 
 
 end

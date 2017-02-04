@@ -42,7 +42,7 @@ describe Board do
     end
 
     it "should know the game is not won" do
-      x_wins
+      tied_game
       expect(board.game_won?("O")).to eq false
     end
 
