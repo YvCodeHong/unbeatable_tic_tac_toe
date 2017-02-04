@@ -31,9 +31,31 @@ describe Board do
   end
 
   context "Winning - The board" do
-    xit "should know when a game has been won" do
+    it "should know the game is won - X" do
       x_wins
+      expect(board.game_won?("X")).to eq true
+    end
+
+    it "should know the game is won - O " do
+      o_wins
+      expect(board.game_won?("O")).to eq true
+    end
+
+    it "should know the game is not won" do
+      x_wins
+      expect(board.game_won?("O")).to eq false
+    end
+
+    it "should know the winner of the game - X " do
+      x_wins
+      board.game_won?("X")
       expect(board.winner).to eq "X"
+    end
+
+    it "should know the winner of the game - O " do
+      o_wins
+      board.game_won?("O")
+      expect(board.winner).to eq "O"
     end
   end
 

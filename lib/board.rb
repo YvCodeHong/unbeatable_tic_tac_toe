@@ -12,7 +12,10 @@ class Board
   end
 
   def game_won?(player)
-    @winner = player
+    all_winning_possibilities.any?  do |possibility|
+       possibility.count(player) == 3
+       @winner = player
+     end
   end
 
   def winning_rows
@@ -24,7 +27,10 @@ class Board
   end
 
   def winning_diagonals
-    [[0,4,7], [2,4,6]]
+    [
+      [ @spaces[0], @spaces[4] ,@spaces[7] ],
+      [ @spaces[2], @spaces[4], @spaces[6] ]
+    ]
   end
 
   def all_winning_possibilities
@@ -45,6 +51,10 @@ class Board
 
   def illegal_moves(space)
     space_taken(space) || outside_of_array(space)
+  end
+
+  def set_winner(player)
+    @winner = player
   end
 
 
