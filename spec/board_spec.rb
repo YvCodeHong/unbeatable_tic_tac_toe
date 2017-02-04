@@ -1,4 +1,5 @@
 require 'board'
+require_relative 'helpers/board_helpers'
 
 describe Board do
   subject(:board) { described_class.new}
@@ -26,6 +27,13 @@ describe Board do
 
     it "should not allow the user to place their marker in a negative number" do
       expect(board.take_turn(-1, "O")).to eq "Illegal move"
+    end
+  end
+
+  context "Winning - The board" do
+    it "should know when a game has been won" do
+      x_wins
+      expect(board.winner).to eq "X"
     end
   end
 end

@@ -1,6 +1,6 @@
 class Board
 
-  attr_reader :spaces
+  attr_reader :spaces, :winner
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
@@ -11,19 +11,18 @@ class Board
     @spaces[space] = player
   end
 
+  private
 
-private
+  def space_taken(space)
+    @spaces[space] == ("X" || "O")
+  end
 
-def space_taken(space)
-  @spaces[space] == ("X" || "O")
-end
+  def outside_of_array(space)
+    space >= 9 || space < 0
+  end
 
-def outside_of_array(space)
-  space >= 9 || space < 0
-end
-
-def illegal_moves(space)
-  space_taken(space) || outside_of_array(space)
-end
+  def illegal_moves(space)
+    space_taken(space) || outside_of_array(space)
+  end
 
 end
