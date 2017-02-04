@@ -19,7 +19,7 @@ def space_taken(space)
 end
 
 def outside_of_array(space)
-  space >= 9
+  space >= 9 || space < 0
 end
 
 def illegal_moves(space)
