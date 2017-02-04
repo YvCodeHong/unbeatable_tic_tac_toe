@@ -39,12 +39,13 @@ class Board
     end
   end
 
-
+  def tied?
+    (1..8).to_a.all? {|space| space_taken(space)}
+  end
 
   private
-
   def space_taken(space)
-    @spaces[space] == ("X" || "O")
+    @spaces[space] == "X" || @spaces[space] == "O"
   end
 
   def outside_of_array(space)
@@ -64,6 +65,5 @@ class Board
       possibility == [player, player, player]
     end
   end
-
 
 end

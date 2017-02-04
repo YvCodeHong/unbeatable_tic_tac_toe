@@ -76,4 +76,11 @@ describe Board do
       expect(board.all_winning_possibilities).to eq [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 7], [2, 4, 6]]
     end
   end
+
+  context "Tied game" do
+    it "checks if there are no more moves" do
+      tied_game
+      expect(board.tied?).to eq true
+    end
+  end
 end
