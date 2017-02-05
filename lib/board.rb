@@ -39,7 +39,7 @@ class Board
 
   def game_won?(player)
     if check_game(player) != []
-      @winner = player
+       set_winner(player)
       @game_over = true
     end
   end
@@ -52,6 +52,12 @@ class Board
 
   def show_board
     @spaces
+  end
+
+  def check_game_over
+    game_won?("X")
+    game_won?("O")
+    @game_over = true if (@winner) || (@move_count > 8)
   end
 
 
@@ -79,11 +85,7 @@ class Board
     end
   end
 
-  def check_game_over
-    game_won?("X")
-    game_won?("O")
-    @game_over = true if (@winner) || (@move_count > 8)
-  end
+
 
 
 
