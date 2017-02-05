@@ -13,9 +13,13 @@ class Board
 
   def take_turn(space, player)
     return "Illegal move" if illegal_moves(space)
-    @spaces[space] = player
+    select_space(space, player)
     @move_count += 1
     game_over?
+  end
+
+  def select_space(space, player)
+    @spaces[space] = player
   end
 
   def winning_rows
@@ -39,7 +43,7 @@ class Board
 
   def game_won?(player)
     if check_game(player) != []
-       set_winner(player)
+      set_winner(player)
       @game_over = true
     end
   end
@@ -64,11 +68,6 @@ class Board
     @spaces.select { |space| !space_taken(space) }
   end
 
-  def reset_that_space(space)
-    @spaces[space] = space
-  end
-
-
   private
   def space_taken(space)
     @spaces[space] == "X" || @spaces[space] == "O"
@@ -90,6 +89,10 @@ class Board
     all_winning_possibilities.select do |possibility|
       possibility == [player, player, player]
     end
+  end
+
+  def reset_space(space)
+    @spaces[space] = space
   end
 
 
