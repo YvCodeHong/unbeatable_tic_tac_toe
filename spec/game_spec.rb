@@ -6,7 +6,7 @@ require 'computer'
 describe Game do
   let(:player1) { instance_double Player, marker: "X" }
   let(:player2) { instance_double Player, marker: "O" }
-  let(:board) { instance_double Board }
+  let(:board) { Board.new }
   subject(:game) { described_class.new(player1, player2, board)}
 
   context "#initialize" do
@@ -27,13 +27,16 @@ describe Game do
         expect(game.current_opponent).to eq player1
       end
 
-
+      context "playing the game" do
+        it "should allow the current player to place their move" do
+          game.new_game(player1)
+          game.play(0)
+          expect(game.show_board).to eq ["X",1,2,3,4,5,6,7,8]
+        end
+      end
     end
 
+
   end
-
-
-
-
 
 end

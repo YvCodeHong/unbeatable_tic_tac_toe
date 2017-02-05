@@ -13,11 +13,21 @@ class Game
   def new_game(player)
     player == @player1 ? @current_player = @player1 : @current_player = @player2
     set_opponent
-    end
-
-    private
-    def set_opponent
-      @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
-    end
-
   end
+
+  def play(space)
+    @board.take_turn(space, @current_player.marker)
+  end
+
+  def show_board
+    @board.show_board
+  end
+
+  private
+  def set_opponent
+    @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
+  end
+
+
+
+end

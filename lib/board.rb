@@ -45,6 +45,12 @@ class Board
     (1..8).to_a.all? {|space| space_taken(space)}
   end
 
+  def show_board
+    @spaces
+  end
+
+
+
   private
   def space_taken(space)
     @spaces[space] == "X" || @spaces[space] == "O"
@@ -67,5 +73,7 @@ class Board
       possibility == [player, player, player]
     end
   end
+
+
 
 end
