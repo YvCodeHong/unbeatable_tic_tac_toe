@@ -11,13 +11,13 @@ class Game
   end
 
   def new_game(player)
-    if player == @player1
-      @current_player = @player1
-      @current_opponent = @player2
-    else
-      @current_player = @player2
-      @current_opponent = @player1
+    player == @player1 ? @current_player = @player1 : @current_player = @player2
+    set_opponent
     end
-  end
 
-end
+    private
+    def set_opponent
+      @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
+    end
+
+  end
