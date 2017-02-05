@@ -2,20 +2,18 @@
 
 class Board
 
-  attr_reader :spaces, :winner, :game_over, :move_count, :current_player, :current_opponent
+  attr_reader :spaces, :winner, :game_over, :current_player, :current_opponent
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
     @winner = false
     @game_over = false
-    @move_count = 0
   end
 
   def take_turn(space, player)
     return "Illegal move" if illegal_moves(space)
     select_space(space, player)
-    @move_count += 1
-    game_over?
+    # game_over?
   end
 
   def select_space(space, player)
@@ -57,9 +55,7 @@ class Board
   end
 
   def game_over?
-    game_won?("X")
-    game_won?("O")
-    @game_over = true if @move_count > 8
+    (game_won?("X") || game_won?("O") || tied? )
   end
 
   def all_available_spaces

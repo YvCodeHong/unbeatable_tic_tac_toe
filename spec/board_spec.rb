@@ -17,10 +17,6 @@ describe Board do
       expect(board.game_over).to eq false
     end
 
-    it "move count is zero" do
-      expect(board.move_count). to eq 0
-    end
-
     it "can check all available spaces" do
       expect(board.all_available_spaces).to eq [0,1,2,3,4,5,6,7,8]
     end

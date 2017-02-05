@@ -20,8 +20,8 @@ class Game
   def play(space)
     change_turns if check_space(space) != "Illegal move"
     game_over?
-    set_winner
-    set_game_over
+    # set_winner
+    # set_game_over
   end
 
   def check_space(space)
