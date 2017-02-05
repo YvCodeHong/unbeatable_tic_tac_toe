@@ -2,7 +2,7 @@
 
 class Board
 
-  attr_reader :spaces, :winner, :game_over, :move_count
+  attr_reader :spaces, :winner, :game_over, :move_count, :current_player, :current_opponent
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
@@ -62,6 +62,10 @@ class Board
 
   def all_available_spaces
     @spaces.select { |space| !space_taken(space) }
+  end
+
+  def reset_that_space(space)
+    @spaces[space] = space
   end
 
 

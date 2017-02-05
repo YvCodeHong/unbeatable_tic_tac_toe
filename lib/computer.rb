@@ -7,4 +7,6 @@ class Computer
   def initialize(marker)
     @marker = marker
   end
+
+
 end

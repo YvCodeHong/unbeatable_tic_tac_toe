@@ -18,9 +18,13 @@ class Game
 
   def play(space)
     return "Game Over" if game_over?
-    change_turns if @board.take_turn(space, @current_player.marker) != "Illegal move"
+    change_turns if check_space(space)
     game_over?
     set_winner
+  end
+
+  def check_space(space)
+    @board.take_turn(space, @current_player.marker) != "Illegal move"
   end
 
   def show_board
@@ -31,19 +35,23 @@ class Game
     @board.game_over?
   end
 
+  def game_tied?
+    @board.tied?
+  end
+
   private
   def set_opponent
     @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
   end
 
   def change_turns
-     @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
-     set_opponent
+    @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
+    set_opponent
   end
 
-def set_winner
-  @winner = @board.winner
-end
+  def set_winner
+    @winner = @board.winner
+  end
 
 
 end
