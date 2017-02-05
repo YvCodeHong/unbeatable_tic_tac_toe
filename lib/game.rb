@@ -11,8 +11,8 @@ class Game
     @winner = false
   end
 
-  def new_game(player)
-    player == @player1.marker ? @current_player = @player1 : @current_player = @player2
+  def new_game(first_player)
+    first_player == @player1.marker ? @current_player = @player1 : @current_player = @player2
   end
 
   def play(space)
@@ -34,17 +34,9 @@ class Game
   def update_game_status
     @winner = "X" if @board.game_won?("X")
     @winner = "O" if @board.game_won?("O")
-
   end
 
   def change_turns
     @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
   end
-
-  private
-
-  def set_winner
-    @winner = @board.winner
-  end
-
 end

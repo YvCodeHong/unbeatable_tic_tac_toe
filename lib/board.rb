@@ -14,25 +14,6 @@ class Board
     select_space(space, player)
   end
 
-  def select_space(space, player)
-    @spaces[space] = player
-  end
-
-  def winning_rows
-    @spaces.each_slice(3).to_a
-  end
-
-  def winning_columns
-    winning_rows.transpose
-  end
-
-  def winning_diagonals
-    [
-      [ @spaces[0], @spaces[4] ,@spaces[7] ],
-      [ @spaces[2], @spaces[4], @spaces[6] ]
-    ]
-  end
-
   def all_winning_possibilities
     winning_rows + winning_columns + winning_diagonals
   end
@@ -67,17 +48,36 @@ class Board
   end
 
   private
-  def space_taken(space)
-    space == "X" || space == "O"
-  end
 
-  def outside_of_array(space)
+  def out_of_bounds(space)
     space >= 9 || space < 0
   end
 
   def illegal_moves(space)
-    space_taken(@spaces[space]) || outside_of_array(space)
+    space_taken(@spaces[space]) || out_of_bounds(space)
   end
 
+  def select_space(space, player)
+    @spaces[space] = player
+  end
+
+  def space_taken(space)
+    space == "X" || space == "O"
+  end
+
+  def winning_rows
+    @spaces.each_slice(3).to_a
+  end
+
+  def winning_columns
+    winning_rows.transpose
+  end
+
+  def winning_diagonals
+    [
+      [ @spaces[0], @spaces[4] ,@spaces[7] ],
+      [ @spaces[2], @spaces[4], @spaces[6] ]
+    ]
+  end
 
 end
