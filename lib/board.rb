@@ -2,17 +2,20 @@
 
 class Board
 
-  attr_reader :spaces, :winner, :game_over
+  attr_reader :spaces, :winner, :game_over, :move_count
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
     @winner = false
     @game_over = false
+    @move_count = 0
   end
 
   def take_turn(space, player)
     return "Illegal move" if illegal_moves(space)
     @spaces[space] = player
+    @move_count += 1
+    check_game_over
   end
 
   def winning_rows
@@ -38,16 +41,12 @@ class Board
     if check_game(player) != []
       @winner = player
       @game_over = true
-      true
-    else
-      false
     end
   end
 
   def tied?
     (1..8).to_a.all? do |space|
       space_taken(space)
-      @game_over = true
     end
   end
 
@@ -78,6 +77,10 @@ class Board
     all_winning_possibilities.select do |possibility|
       possibility == [player, player, player]
     end
+  end
+
+  def check_game_over
+    @game_over = true if (@winner) || (@move_count > 8)
   end
 
 

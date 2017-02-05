@@ -16,6 +16,10 @@ describe Board do
     it "should not be game over" do
       expect(board.game_over).to eq false
     end
+
+    it "move count is zero" do
+      expect(board.move_count). to eq 0
+    end
   end
 
   context "When taking a turn it" do
@@ -39,20 +43,6 @@ describe Board do
   end
 
   context "Winning - The board" do
-    it "should know the game is won - X" do
-      x_wins
-      expect(board.game_won?("X")).to eq true
-    end
-
-    it "should know the game is won - O " do
-      o_wins
-      expect(board.game_won?("O")).to eq true
-    end
-
-    it "should know the game is not won" do
-      tied_game
-      expect(board.game_won?("O")).to eq false
-    end
 
     it "should know the winner of the game - X " do
       x_wins
@@ -64,6 +54,12 @@ describe Board do
       o_wins
       board.game_won?("O")
       expect(board.winner).to eq "O"
+    end
+
+    it "should set the game to game over when someone won " do
+      o_wins
+      board.game_won?("O")
+      expect(board.game_over).to eq true
     end
   end
 
@@ -89,6 +85,11 @@ describe Board do
     it "checks if there are no more moves" do
       tied_game
       expect(board.tied?).to eq true
+    end
+
+    it "sets the game to over if it is tied" do
+      tied_game
+      expect(board.game_over).to eq true
     end
   end
 end
