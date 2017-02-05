@@ -55,22 +55,17 @@ describe Game do
       expect(game.current_player).to eq player1
     end
 
-    it "should not allow a move after the game is over" do
-      x_wins_two_player
-      expect(game.play(0)).to eq "Game Over"
-    end
-
   end
 
   context "game over" do
     it "knows the game is over if x wins" do
       x_wins_two_player
-      expect(game.game_over?).to eq true
+      expect(game.game_over).to eq true
     end
 
     it "knows the game is over if o wins" do
       o_wins_two_player
-      expect(game.game_over?).to eq true
+      expect(game.game_over).to eq true
     end
 
     it "knows the game is over if tied" do

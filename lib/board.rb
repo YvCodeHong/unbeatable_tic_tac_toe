@@ -44,13 +44,13 @@ class Board
   def game_won?(player)
     if check_game(player) != []
       set_winner(player)
-      @game_over = true
+      set_game_over
     end
   end
 
   def tied?
     (1..8).to_a.all? do |space|
-      @spaces[space]
+      @spaces[space] != space
     end
   end
 
@@ -61,11 +61,15 @@ class Board
   def game_over?
     game_won?("X")
     game_won?("O")
-    @game_over = true if (@winner) || (@move_count > 8)
+    @game_over = true if @move_count > 8
   end
 
   def all_available_spaces
-    @spaces.select { |space| !space_taken(space) }
+    @spaces.select { |space| (!space_taken(space)) }
+  end
+
+  def reset_space(space)
+    @spaces[space] = space
   end
 
   private
@@ -85,17 +89,15 @@ class Board
     @winner = player
   end
 
+  def set_game_over
+    @game_over = true
+  end
+
   def check_game(player)
     all_winning_possibilities.select do |possibility|
       possibility == [player, player, player]
     end
   end
-
-  def reset_space(space)
-    @spaces[space] = space
-  end
-
-
 
 
 

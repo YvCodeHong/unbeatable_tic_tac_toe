@@ -24,7 +24,6 @@ class Computer
     top_minimax_score = best_possible_score.max_by { |k, v| v }[1]
 
     if depth == 0
-      require 'pry'; binding.pry
       return best_space_to_pick
     elsif depth > 0
       return top_minimax_score
@@ -36,8 +35,8 @@ class Computer
     game.board.select_space(space, game.current_player.marker)
   end
 
-  def reset_space(space)
-    game.board.reset_space(game, space)
+  def reset_space(game, space)
+    game.board.reset_space(space)
   end
 
   def play(game)

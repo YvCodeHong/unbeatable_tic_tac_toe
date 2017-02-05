@@ -2,13 +2,14 @@
 
 class Game
 
-  attr_reader :player1, :player2, :board, :current_player, :current_opponent, :winner
+  attr_reader :player1, :player2, :board, :current_player, :current_opponent, :winner, :game_over
 
   def initialize(player1, player2, board)
     @player1 = player1
     @player2 = player2
     @board = board
     @winner = false
+    @game_over = false
   end
 
   def new_game(player)
@@ -17,10 +18,10 @@ class Game
   end
 
   def play(space)
-    return "Game Over" if game_over?
     change_turns if check_space(space) != "Illegal move"
     game_over?
     set_winner
+    set_game_over
   end
 
   def check_space(space)
@@ -51,6 +52,10 @@ class Game
 
   def set_winner
     @winner = @board.winner
+  end
+
+  def set_game_over
+    @game_over = @board.game_over
   end
 
 

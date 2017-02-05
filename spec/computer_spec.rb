@@ -14,11 +14,21 @@ describe Computer do
   end
 
   context "feature testing" do
-    it "returns a space" do
+    it "returns a space when called - 1st turn" do
+      game.new_game(player1)
+      game.play(0)
+      game.play(computer.play(game))
+      expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,9]
+    end
+
+    it "returns a space when called - 2nd turn" do
       game.new_game(computer)
       game.play(computer.play(game))
-      expect(game.show_board).not_to eq [0,1,2,3,4,5,6,7,9]
+      game.play(2)
+      expect(game.show_board).to eq [0,1,2,3,4,5,6,7,9]
     end
+
+
   end
 
 
