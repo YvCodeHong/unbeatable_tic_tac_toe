@@ -34,8 +34,7 @@ describe Computer do
       game.new_game(player1)
       game.play(0)
       game.play(computer.play(game))
-      require 'pry'; binding.pry
-      expect(game.show_board).to eq ["X",1,2,3,4,5,6,7,9]
+      expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,9]
     end
 
 

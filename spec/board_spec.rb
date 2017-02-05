@@ -42,13 +42,13 @@ describe Board do
 
     it "should know the winner of the game - X " do
       x_wins
-      board.game_won?("X")
+      board.check_winner
       expect(board.winner).to eq "X"
     end
 
     it "should know the winner of the game - O " do
       o_wins
-      board.game_won?("O")
+      board.check_winner
       expect(board.winner).to eq "O"
     end
   end

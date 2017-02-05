@@ -18,14 +18,7 @@ class Game
   end
 
   def play(space)
-    change_turns if check_space(space) != "Illegal move"
-    # game_over?
-    # set_winner
-    # set_game_over
-  end
-
-  def check_space(space)
-    @board.take_turn(space, @current_player.marker)
+    change_turns if @board.take_turn(space, @current_player.marker) != "Illegal move"
   end
 
   def show_board
@@ -41,19 +34,18 @@ class Game
   end
 
   def update_game_status
-    game_over?
-    set_winner
-    set_game_over
-  end
-
-  private
-  def set_opponent
-    @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
+    @winner = "X" if @board.game_won?("X")
+    @winner = "O" if @board.game_won?("O")
   end
 
   def change_turns
     @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
     set_opponent
+  end
+
+  private
+  def set_opponent
+    @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
   end
 
   def set_winner
@@ -63,6 +55,7 @@ class Game
   def set_game_over
     @game_over = @board.game_over
   end
+
 
 
 
