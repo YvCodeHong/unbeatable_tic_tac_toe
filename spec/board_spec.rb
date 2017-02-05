@@ -13,10 +13,6 @@ describe Board do
       expect(board.winner).to eq false
     end
 
-    it "should not be game over" do
-      expect(board.game_over).to eq false
-    end
-
     it "can check all available spaces" do
       expect(board.all_available_spaces).to eq [0,1,2,3,4,5,6,7,8]
     end
@@ -55,12 +51,6 @@ describe Board do
       board.game_won?("O")
       expect(board.winner).to eq "O"
     end
-
-    it "should set the game to game over when someone won " do
-      o_wins
-      board.game_won?("O")
-      expect(board.game_over).to eq true
-    end
   end
 
   context "Winning situations" do
@@ -84,12 +74,14 @@ describe Board do
   context "Tied game" do
     it "checks if there are no more moves" do
       tied_game
+      board.game_over?
       expect(board.tied?).to eq true
     end
 
     it "sets the game to over if it is tied" do
       tied_game
-      expect(board.game_over).to eq true
+
+      expect(board.game_over?).to eq true
     end
   end
 end

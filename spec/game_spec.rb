@@ -58,33 +58,22 @@ describe Game do
   end
 
   context "game over" do
-    it "knows the game is over if x wins" do
-      x_wins_two_player
-      expect(game.game_over).to eq true
-    end
-
-    it "knows the game is over if o wins" do
-      o_wins_two_player
-      expect(game.game_over).to eq true
-    end
-
-    it "knows the game is over if tied" do
-      tied_game_two_player
-      expect(game.game_over?).to eq true
-    end
 
     it "knows when x wins" do
       x_wins_two_player
+      game.update_game_status
       expect(game.winner).to eq player1.marker
     end
 
     it "knows when o wins" do
       o_wins_two_player
+      game.update_game_status
       expect(game.winner).to eq player2.marker
     end
 
     it "knows that nobody wins a tied game" do
       tied_game_two_player
+      game.update_game_status
       expect(game.winner).to eq false
     end
 
