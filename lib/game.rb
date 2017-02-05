@@ -57,8 +57,4 @@ class Game
     @game_over = @board.game_over
   end
 
-
-
-
-
 end

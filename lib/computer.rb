@@ -1,7 +1,4 @@
 # Controls the AI
-
-require_relative 'board'
-
 class Computer
 
   attr_reader :marker

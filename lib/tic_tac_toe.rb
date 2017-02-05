@@ -16,8 +16,8 @@ class TicTacToe
     puts @line
     welcome
     until @game.game_over? do
-      take_turn
-      show_board
+      take_turn if @player == "Player"
+      show_board if @player == "Player"
       computer_turn if @opponent == "Computer"
     end
     @game.update_game_status
@@ -61,16 +61,21 @@ class TicTacToe
       case game_type
       when 1
         puts "Two players? Great choice"
+        @player = "Player"
         @opponent = "Player"
         two_player_game
         break
       when 2
         puts "Against the computer? You won't win!"
+        @player = "Player"
         @opponent = "Computer"
         player_vs_computer
         break
       when 3
         puts "Watching two computers battle it out? Nice!"
+        @player = "Computer"
+        @opponent = "Computer"
+        computer_vs_computer
         break
       else
         puts "I didn't quite get that - 1, 2 or 3"
@@ -86,6 +91,11 @@ class TicTacToe
   def player_vs_computer
     @game = Game.new(Player.new("X"), Computer.new("O"), @board)
     who_goes_first_with_computer
+  end
+
+  def computer_vs_computer
+    @game = Game.new(Computer.new("X"), Computer.new("O"), @board)
+    who_goes_first_two_computers
   end
 
   def who_goes_first
@@ -129,6 +139,26 @@ class TicTacToe
     end
   end
 
+  def who_goes_first_two_computers
+    puts "Who do you want to go first?"
+    puts "X or O"
+    loop do
+      starting_player = gets.chomp.upcase
+      case starting_player
+      when "X"
+        puts "X goes first!"
+        @game.new_game(starting_player)
+        break
+      when "O"
+        puts "O goes first!"
+        @game.new_game(starting_player)
+        break
+      else
+        puts "I didn't quite get that - X or O?"
+      end
+    end
+  end
+
   def take_turn
     print "#{@game.current_player.marker}, which cell are you after?: "
     space = gets.chomp.to_i
@@ -136,8 +166,8 @@ class TicTacToe
   end
 
   def computer_turn
-    puts "The computer, #{@game.current_player.marker} is thinking"
-    @game.play(@game.player2.play(@game))
+    puts "The computer, #{@game.current_player.marker}, is thinking"
+    @game.play(@game.current_player.play(@game))
     show_board
   end
 end
