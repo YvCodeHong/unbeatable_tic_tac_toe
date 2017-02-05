@@ -49,9 +49,7 @@ class Board
   end
 
   def tied?
-    (1..8).to_a.all? do |space|
-      @spaces[space] != space
-    end
+    (0..8).to_a.all? {|space| @spaces[space] != space} && !@winner
   end
 
   def show_board

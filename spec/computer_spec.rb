@@ -14,19 +14,29 @@ describe Computer do
   end
 
   context "feature testing" do
-    it "returns a space when called - 1st turn" do
+    xit "Can let player 1 start" do
       game.new_game(player1)
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,9]
     end
 
-    it "returns a space when called - 2nd turn" do
+    xit "computer can start" do
       game.new_game(computer)
       game.play(computer.play(game))
       game.play(2)
-      expect(game.show_board).to eq [0,1,2,3,4,5,6,7,9]
+      expect(game.show_board).not_to eq [0,1,"X",3,4,5,6,7,9]
     end
+  end
+
+  context "full game feature test move by move - warning SLOW" do
+    it "First turn" do
+      game.new_game(player1)
+      game.play(0)
+      game.play(computer.play(game))
+      expect(game.show_board).to eq ["X",1,2,3,4,5,6,7,9]
+    end
+
 
 
   end
