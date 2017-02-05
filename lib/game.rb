@@ -13,7 +13,7 @@ class Game
   end
 
   def new_game(player)
-    player == @player1 ? @current_player = @player1 : @current_player = @player2
+    player == @player1.marker ? @current_player = @player1 : @current_player = @player2
     set_opponent
   end
 
