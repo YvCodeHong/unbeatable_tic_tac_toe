@@ -20,6 +20,11 @@ I decided to write this in Ruby due to the built in ways of iterating that Ruby 
 * computer player should never lose and should win whenever possible
 * user should also have the choice of which player goes first
 
+## Further plans:
+* This runs quite slow, the computer's first move takes about 20 seconds. I would like to find a way to speed that up.
+* I'd like to create a web interface, but not until I can speed up the AI
+* Additional refactoring
+
 ## Main resources:
 * [Recursion 201: Minimax, Tic Tac Toe, & An Unbeatable AI](http://www.shei.io/recursion-minimax-algorithm/)
 
