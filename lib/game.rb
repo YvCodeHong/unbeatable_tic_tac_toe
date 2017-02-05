@@ -28,7 +28,7 @@ class Game
   end
 
   def game_over?
-    @board.check_game_over
+    @board.game_over?
   end
 
   private

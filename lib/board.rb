@@ -15,7 +15,7 @@ class Board
     return "Illegal move" if illegal_moves(space)
     @spaces[space] = player
     @move_count += 1
-    check_game_over
+    game_over?
   end
 
   def winning_rows
@@ -54,12 +54,15 @@ class Board
     @spaces
   end
 
-  def check_game_over
+  def game_over?
     game_won?("X")
     game_won?("O")
     @game_over = true if (@winner) || (@move_count > 8)
   end
 
+  def all_available_spaces
+    @spaces.select { |space| !space_taken(space) }
+  end
 
 
   private
