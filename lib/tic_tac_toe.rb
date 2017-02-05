@@ -9,7 +9,6 @@ class TicTacToe
     @board = board
     @game = nil
     @line = "============================"
-
   end
 
   def game_loop
@@ -17,18 +16,12 @@ class TicTacToe
     welcome
     until @game.game_over? do
       take_turn if @player == "Player"
-      show_board if @player == "Player"
       computer_turn if @opponent == "Computer"
     end
-    @game.update_game_status
-    puts @line
-    if @game.winner
-      puts "#{@game.winner} is the winner!"
-    else
-      puts "The game was tied!"
-    end
-    puts @line
+    end_of_game
   end
+
+  private
 
   def welcome
     puts "Let's play Tic Tac Toe!"
@@ -37,6 +30,14 @@ class TicTacToe
     puts "Select 2 to play against the computer"
     puts "Select 3 for two computers to play against each other"
     select_game_type
+  end
+
+  def end_of_game
+    @game.update_game_status
+    puts @line
+    @game.winner ? message = "#{@game.winner} is the winner!" : message = "The game was tied!"
+    puts message
+    puts @line
   end
 
   def show_empty_board
@@ -90,12 +91,14 @@ class TicTacToe
 
   def player_vs_computer
     @game = Game.new(Player.new("X"), Computer.new("O"), @board)
-    who_goes_first_with_computer
+    puts "You are X, the computer is O"
+    who_goes_first
   end
 
   def computer_vs_computer
     @game = Game.new(Computer.new("X"), Computer.new("O"), @board)
-    who_goes_first_two_computers
+    puts "X and O are both computer players"
+    who_goes_first
   end
 
   def who_goes_first
@@ -118,51 +121,11 @@ class TicTacToe
     end
   end
 
-  def who_goes_first_with_computer
-    puts "Who do you want to go first?"
-    puts "X(You!) or O(computer)?"
-    loop do
-      starting_player = gets.chomp.upcase
-      case starting_player
-      when "X"
-        puts "X goes first!"
-        @game.new_game(starting_player)
-        break
-      when "O"
-        puts "O goes first!"
-        @game.new_game(starting_player)
-        computer_turn
-        break
-      else
-        puts "I didn't quite get that - X or O?"
-      end
-    end
-  end
-
-  def who_goes_first_two_computers
-    puts "Who do you want to go first?"
-    puts "X or O"
-    loop do
-      starting_player = gets.chomp.upcase
-      case starting_player
-      when "X"
-        puts "X goes first!"
-        @game.new_game(starting_player)
-        break
-      when "O"
-        puts "O goes first!"
-        @game.new_game(starting_player)
-        break
-      else
-        puts "I didn't quite get that - X or O?"
-      end
-    end
-  end
-
   def take_turn
     print "#{@game.current_player.marker}, which cell are you after?: "
     space = gets.chomp.to_i
     @game.play(space)
+    show_board
   end
 
   def computer_turn
