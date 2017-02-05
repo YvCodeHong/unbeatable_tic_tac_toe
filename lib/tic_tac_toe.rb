@@ -8,14 +8,25 @@ class TicTacToe
   def initialize(board = Board.new)
     @board = board
     @game = nil
+    @line = "============================"
+
   end
 
   def game_loop
+    puts @line
     welcome
     until @game.game_over? do
       take_turn
       show_board
     end
+    @game.update_game_status
+    puts @line
+    if @game.winner
+      puts "#{@game.winner} is the winner!"
+    else
+      puts "The game was tied!"
+    end
+    puts @line
   end
 
   def welcome
