@@ -1,5 +1,5 @@
 def x_wins_two_player
-  game.new_game(player1)
+  game.new_game("X")
   game.play(0)
   game.play(6)
   game.play(1)
@@ -8,7 +8,7 @@ def x_wins_two_player
 end
 
 def o_wins_two_player
-  game.new_game(player1)
+  game.new_game("X")
   game.play(0)
   game.play(2)
   game.play(1)
@@ -18,7 +18,7 @@ def o_wins_two_player
 end
 
 def tied_game_two_player
-  game.new_game(player1)
+  game.new_game("X")
   game.play(0)
   game.play(6)
   game.play(1)
