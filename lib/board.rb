@@ -80,6 +80,8 @@ class Board
   end
 
   def check_game_over
+    game_won?("X")
+    game_won?("O")
     @game_over = true if (@winner) || (@move_count > 8)
   end
 

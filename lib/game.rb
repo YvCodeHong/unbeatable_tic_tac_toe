@@ -17,11 +17,14 @@ class Game
 
   def play(space)
     change_turns if @board.take_turn(space, @current_player.marker) != "Illegal move"
-
   end
 
   def show_board
     @board.show_board
+  end
+
+  def game_over?
+    @board.game_over
   end
 
   private
