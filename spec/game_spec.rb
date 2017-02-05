@@ -14,6 +14,14 @@ describe Game do
       expect(game.player1).to eq player1
     end
 
+    context "setup" do
+      it "should allow the player to decide who goes first" do
+        game.new_game(player1)
+        expect(game.current_player).to eq player1
+      end
+
+    end
+
   end
 
 
