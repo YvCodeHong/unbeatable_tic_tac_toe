@@ -18,6 +18,8 @@ class TicTacToe
     until @game.game_over? do
       take_turn
       show_board
+      computer_turn if @opponent == "Computer"
+      show_board if @opponent == "Computer"
     end
     @game.update_game_status
     puts @line
@@ -60,10 +62,13 @@ class TicTacToe
       case game_type
       when 1
         puts "Two players? Great choice"
+        @opponent = "Player"
         two_player_game
         break
       when 2
         puts "Against the computer? You won't win!"
+        @opponent = "Computer"
+        player_vs_computer
         break
       when 3
         puts "Watching two computers battle it out? Nice!"
@@ -77,6 +82,11 @@ class TicTacToe
   def two_player_game
     @game = Game.new(Player.new("X"), Player.new("O"), @board)
     who_goes_first
+  end
+
+  def player_vs_computer
+    @game = Game.new(Player.new("X"), Computer.new("O"), @board)
+    who_goes_first_with_computer
   end
 
   def who_goes_first
@@ -99,9 +109,34 @@ class TicTacToe
     end
   end
 
+  def who_goes_first_with_computer
+    puts "Who do you want to go first?"
+    puts "X(You!) or O(computer)?"
+    loop do
+      starting_player = gets.chomp.upcase
+      case starting_player
+      when "X"
+        puts "X goes first!"
+        @game.new_game(starting_player)
+        break
+      when "O"
+        puts "O goes first!"
+        @game.new_game(starting_player)
+        break
+      else
+        puts "I didn't quite get that - X or O?"
+      end
+    end
+  end
+
   def take_turn
     print "#{@game.current_player.marker}, which cell are you after?: "
     space = gets.chomp.to_i
     @game.play(space)
+  end
+
+  def computer_turn
+    puts "The computer, #{@game.current_player.marker} is thinking"
+    @game.play(@game.player2.play(@game))
   end
 end
