@@ -2,10 +2,12 @@
 
 class Board
 
-  attr_reader :spaces, :winner
+  attr_reader :spaces, :winner, :game_over
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
+    @winner = false
+    @game_over = false
   end
 
   def take_turn(space, player)
@@ -35,6 +37,7 @@ class Board
   def game_won?(player)
     if check_game(player) != []
       @winner = player
+      @game_over = true
       true
     else
       false
@@ -42,7 +45,10 @@ class Board
   end
 
   def tied?
-    (1..8).to_a.all? {|space| space_taken(space)}
+    (1..8).to_a.all? do |space|
+      space_taken(space)
+      @game_over = true
+    end
   end
 
   def show_board

@@ -8,6 +8,14 @@ describe Board do
     it "should initialize with an array numbered 0 - 8" do
       expect(board.spaces).to eq([0,1,2,3,4,5,6,7,8])
     end
+
+    it "should have no winner" do
+      expect(board.winner).to eq false
+    end
+
+    it "should not be game over" do
+      expect(board.game_over).to eq false
+    end
   end
 
   context "When taking a turn it" do

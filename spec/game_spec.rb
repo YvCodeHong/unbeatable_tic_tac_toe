@@ -46,6 +46,12 @@ describe Game do
         game.play(0)
         expect(game.current_opponent).to eq player1
       end
+
+      it "should not change the current player if their move was illegal" do
+        game.new_game(player1)
+        game.play(10)
+        expect(game.current_player).to eq player1
+      end
     end
   end
 

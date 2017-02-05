@@ -16,8 +16,8 @@ class Game
   end
 
   def play(space)
-    @board.take_turn(space, @current_player.marker)
-    change_turns
+    change_turns if @board.take_turn(space, @current_player.marker) != "Illegal move"
+
   end
 
   def show_board
