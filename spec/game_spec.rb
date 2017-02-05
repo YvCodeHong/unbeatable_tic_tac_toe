@@ -54,6 +54,12 @@ describe Game do
       game.play(10)
       expect(game.current_player).to eq player1
     end
+
+    it "should not allow a move after the game is over" do
+      x_wins_two_player
+      expect(game.play(0)).to eq "Game Over"
+    end
+
   end
 
   context "game over" do

@@ -17,6 +17,7 @@ class Game
   end
 
   def play(space)
+    return "Game Over" if game_over?
     change_turns if @board.take_turn(space, @current_player.marker) != "Illegal move"
     game_over?
     set_winner
