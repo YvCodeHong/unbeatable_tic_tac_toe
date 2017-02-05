@@ -23,6 +23,9 @@ I decided to write this in Ruby due to the built in ways of iterating that Ruby 
 ## Further plans:
 * This runs quite slow, the computer's first move takes about 20 seconds. I would like to find a way to speed that up.
 * I'd like to create a web interface, but not until I can speed up the AI
+* Automating tests for interface
+* Stubbing out the randomness of the AI
+* Minimising dependencies
 * Additional refactoring
 
 ## Main resources:

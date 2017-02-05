@@ -47,14 +47,14 @@ class Board
     @spaces[space] = space
   end
 
+  def illegal_moves(space)
+    space_taken(@spaces[space]) || out_of_bounds(space)
+  end
+
   private
 
   def out_of_bounds(space)
     space >= 9 || space < 0
-  end
-
-  def illegal_moves(space)
-    space_taken(@spaces[space]) || out_of_bounds(space)
   end
 
   def select_space(space, player)

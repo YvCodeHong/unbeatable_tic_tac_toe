@@ -123,9 +123,16 @@ class TicTacToe
 
   def take_turn
     print "#{@game.current_player.marker}, which cell are you after?: "
-    space = gets.chomp.to_i
-    @game.play(space)
-    show_board
+    loop do
+      space = gets.chomp.to_i
+      if @game.board.illegal_moves(space)
+        puts "You can't go there. Try again!"
+      else
+        @game.play(space)
+        show_board
+        break
+      end
+    end
   end
 
   def computer_turn
