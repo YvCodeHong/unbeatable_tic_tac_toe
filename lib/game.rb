@@ -2,19 +2,17 @@
 
 class Game
 
-  attr_reader :player1, :player2, :board, :current_player, :current_opponent, :winner, :game_over
+  attr_reader :player1, :player2, :board, :current_player, :winner
 
   def initialize(player1, player2, board)
     @player1 = player1
     @player2 = player2
     @board = board
     @winner = false
-    @game_over = false
   end
 
   def new_game(player)
     player == @player1.marker ? @current_player = @player1 : @current_player = @player2
-    set_opponent
   end
 
   def play(space)
@@ -41,20 +39,12 @@ class Game
 
   def change_turns
     @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
-    set_opponent
   end
 
   private
-  def set_opponent
-    @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
-  end
 
   def set_winner
     @winner = @board.winner
-  end
-
-  def set_game_over
-    @game_over = @board.game_over
   end
 
 end

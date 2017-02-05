@@ -2,12 +2,11 @@
 
 class Board
 
-  attr_reader :spaces, :winner, :game_over, :current_player, :current_opponent
+  attr_reader :spaces, :winner
 
   def initialize
     @spaces = [0,1,2,3,4,5,6,7,8]
-    @winner = false
-
+    @winner = nil
   end
 
   def take_turn(space, player)

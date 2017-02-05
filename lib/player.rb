@@ -1,4 +1,4 @@
-# Takes note of the player's marker
+# Controls the Player and notes the marker
 
 class Player
 

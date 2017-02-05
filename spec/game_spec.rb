@@ -20,13 +20,11 @@ describe Game do
     it "should allow the player to decide that player one goes first" do
       game.new_game("X")
       expect(game.current_player).to eq player1
-      expect(game.current_opponent).to eq player2
     end
 
     it "should allow the player to decide that player 2 goes first" do
       game.new_game("O")
       expect(game.current_player).to eq player2
-      expect(game.current_opponent).to eq player1
     end
   end
 
@@ -41,12 +39,6 @@ describe Game do
       game.new_game("X")
       game.play(0)
       expect(game.current_player).to eq player2
-    end
-
-    it "should change the current opponent once a move is made" do
-      game.new_game("X")
-      game.play(0)
-      expect(game.current_opponent).to eq player1
     end
 
     it "should not change the current player if their move was illegal" do

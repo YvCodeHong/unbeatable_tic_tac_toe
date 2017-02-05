@@ -10,7 +10,7 @@ describe Board do
     end
 
     it "should have no winner" do
-      expect(board.winner).to eq false
+      expect(board.winner).to eq nil
     end
 
     it "can check all available spaces" do
