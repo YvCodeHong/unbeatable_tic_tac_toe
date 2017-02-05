@@ -17,6 +17,7 @@ class Game
 
   def play(space)
     @board.take_turn(space, @current_player.marker)
+    change_turns
   end
 
   def show_board
@@ -26,6 +27,11 @@ class Game
   private
   def set_opponent
     @current_player == @player1 ? @current_opponent = @player2 : @current_opponent = @player1
+  end
+
+  def change_turns
+     @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
+     set_opponent
   end
 
 

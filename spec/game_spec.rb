@@ -34,9 +34,20 @@ describe Game do
           expect(game.show_board).to eq ["X",1,2,3,4,5,6,7,8]
         end
       end
+
+      it "should change the current player once a move is made" do
+        game.new_game(player1)
+        game.play(0)
+        expect(game.current_player).to eq player2
+      end
+
+      it "should change the current opponent once a move is made" do
+        game.new_game(player1)
+        game.play(0)
+        expect(game.current_opponent).to eq player1
+      end
     end
-
-
   end
+
 
 end
