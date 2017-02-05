@@ -50,7 +50,7 @@ class Board
 
   def tied?
     (1..8).to_a.all? do |space|
-      space_taken(space)
+      @spaces[space]
     end
   end
 
@@ -70,7 +70,7 @@ class Board
 
   private
   def space_taken(space)
-    @spaces[space] == "X" || @spaces[space] == "O"
+    space == "X" || space == "O"
   end
 
   def outside_of_array(space)
@@ -78,7 +78,7 @@ class Board
   end
 
   def illegal_moves(space)
-    space_taken(space) || outside_of_array(space)
+    space_taken(@spaces[space]) || outside_of_array(space)
   end
 
   def set_winner(player)
