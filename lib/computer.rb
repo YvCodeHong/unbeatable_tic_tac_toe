@@ -7,6 +7,12 @@ class Computer
     @marker = marker
   end
 
+  def play(game)
+    calculate_best_move(game)
+  end
+
+  private
+
   def calculate_best_move(game, depth = 0, best_score = {})
     return score_scenarios(game) if game.game_over?
 
@@ -22,8 +28,8 @@ class Computer
 
   def score_scenarios(game)
     @marker == "X" ? opponent = "O" : opponent = "X"
-    return -10 if game.board.game_won?(opponent)
-    return 10 if game.board.game_won?(@marker)
+    return -1 if game.board.game_won?(opponent)
+    return 1 if game.board.game_won?(@marker)
     return 0 if game.board.tied?
   end
 
@@ -42,11 +48,6 @@ class Computer
 
   def alternatave_score(best_score)
     best_score.min_by { |key, value| value }[1]
-  end
-
-
-  def play(game)
-    calculate_best_move(game)
   end
 
 end
