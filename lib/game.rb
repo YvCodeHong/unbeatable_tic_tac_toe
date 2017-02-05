@@ -36,6 +36,7 @@ class Game
   def update_game_status
     @winner = "X" if @board.game_won?("X")
     @winner = "O" if @board.game_won?("O")
+
   end
 
   def change_turns

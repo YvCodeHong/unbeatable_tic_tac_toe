@@ -19,7 +19,6 @@ class TicTacToe
       take_turn
       show_board
       computer_turn if @opponent == "Computer"
-      show_board if @opponent == "Computer"
     end
     @game.update_game_status
     puts @line
@@ -122,6 +121,7 @@ class TicTacToe
       when "O"
         puts "O goes first!"
         @game.new_game(starting_player)
+        computer_turn
         break
       else
         puts "I didn't quite get that - X or O?"
@@ -138,5 +138,6 @@ class TicTacToe
   def computer_turn
     puts "The computer, #{@game.current_player.marker} is thinking"
     @game.play(@game.player2.play(@game))
+    show_board
   end
 end
