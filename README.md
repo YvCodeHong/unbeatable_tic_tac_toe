@@ -20,6 +20,9 @@ I decided to write this in Ruby due to the built in ways of iterating that Ruby 
 * computer player should never lose and should win whenever possible
 * user should also have the choice of which player goes first
 
+## Blog
+* I wrote a [blog post](https://medium.com/@pelensky/unbeatable-tic-tac-toe-cdff434b82c9#.5s652m8lv) about my experiences building this.
+
 ## Further plans:
 * This runs quite slow, the computer's first move takes about 20 seconds. I would like to find a way to speed that up.
 * I'd like to create a web interface, but not until I can speed up the AI
@@ -38,7 +41,6 @@ I decided to write this in Ruby due to the built in ways of iterating that Ruby 
 * [Minimax Algorithm Tic Tac Toe](https://www.youtube.com/watch?v=cGN6LfnOPeo)
 
 * additional Google and Stack Overflow searches
-
 
 ## The Rules
 
