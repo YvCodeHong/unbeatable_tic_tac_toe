@@ -7,4 +7,8 @@ class Player
   def initialize(marker)
     @marker = marker
   end
+
+  def play(game)
+    game.play(game.board.all_available_spaces.sample)
+  end
 end
