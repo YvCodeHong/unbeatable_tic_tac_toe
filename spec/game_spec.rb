@@ -66,7 +66,7 @@ describe Game do
     it "knows that nobody wins a tied game" do
       tied_game_two_player
       game.update_game_status
-      expect(game.winner).to eq false
+      expect(game.winner).to eq nil
     end
 
   end

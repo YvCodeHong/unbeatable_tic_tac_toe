@@ -8,7 +8,7 @@ class Game
     @player1 = player1
     @player2 = player2
     @board = board
-    @winner = false
+    @winner = nil
   end
 
   def new_game(first_player)
@@ -32,8 +32,8 @@ class Game
   end
 
   def update_game_status
-    @winner = "X" if @board.game_won?("X")
-    @winner = "O" if @board.game_won?("O")
+    @board.check_winner
+    @winner = @board.winner
   end
 
   def change_turns
