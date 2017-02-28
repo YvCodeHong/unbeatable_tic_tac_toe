@@ -84,26 +84,10 @@ class TicTacToe
     end
   end
 
-  def two_player_game
-    @game = Game.new(Player.new("X"), Player.new("O"), @board)
-    create_new_game("X")
-  end
-
-  def player_vs_computer
-    @game = Game.new(Player.new("X"), Computer.new("O"), @board)
-    puts "You are X, the computer is O"
-    create_new_game("X")
-  end
-
-  def computer_vs_computer
-    @game = Game.new(Computer.new("X"), Computer.new("O"), @board)
-    puts "X and O are both computer players"
-    create_new_game("X")
-  end
-
   def who_goes_first_prompt
     puts "Who do you want to go first?"
-    puts "X or O?"
+    puts "Select 1 for player"
+    puts "Select 2 for computer"
     who_goes_first
   end
 
@@ -123,6 +107,24 @@ class TicTacToe
         puts "I didn't quite get that - X or O?"
       end
     end
+  end
+
+
+  def two_player_game
+    @game = Game.new(Player.new("X"), Player.new("O"), @board)
+    create_new_game("X")
+  end
+
+  def player_vs_computer
+    @game = Game.new(Player.new("X"), Computer.new("O"), @board)
+    puts "You are X, the computer is O"
+    create_new_game("X")
+  end
+
+  def computer_vs_computer
+    @game = Game.new(Computer.new("X"), Computer.new("O"), @board)
+    puts "X and O are both computer players"
+    create_new_game("X")
   end
 
   def create_new_game(starting_player)

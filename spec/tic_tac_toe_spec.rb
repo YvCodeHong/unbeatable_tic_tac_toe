@@ -71,7 +71,7 @@ describe TicTacToe do
   context "#who_goes_first_prompt" do
     it "displays the expected text" do
       allow(tic_tac_toe).to receive(:who_goes_first)
-      expect { tic_tac_toe.who_goes_first_prompt }.to output("Who do you want to go first?\nX or O?\n").to_stdout
+      expect { tic_tac_toe.who_goes_first_prompt }.to output("Who do you want to go first?\nSelect 1 for player\nSelect 2 for computer\n").to_stdout
     end
   end
 
