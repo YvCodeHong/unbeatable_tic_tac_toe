@@ -75,7 +75,7 @@ class Board
 
   def winning_diagonals
     [
-      [ @spaces[0], @spaces[4] ,@spaces[7] ],
+      [ @spaces[0], @spaces[4] ,@spaces[8] ],
       [ @spaces[2], @spaces[4], @spaces[6] ]
     ]
   end
