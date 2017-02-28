@@ -141,5 +141,21 @@ describe TicTacToe do
       tic_tac_toe.game.play(2)
       expect { tic_tac_toe.end_of_game }.to output("============================\nO is the winner!\n============================\n").to_stdout
     end
+
+    it "alerts the user when there is a tie" do
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
+      tic_tac_toe.two_player_game
+      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.play(0)
+      tic_tac_toe.game.play(8)
+      tic_tac_toe.game.play(4)
+      tic_tac_toe.game.play(6)
+      tic_tac_toe.game.play(7)
+      tic_tac_toe.game.play(1)
+      tic_tac_toe.game.play(2)
+      tic_tac_toe.game.play(3)
+      tic_tac_toe.game.play(5)
+      expect { tic_tac_toe.end_of_game }.to output("============================\nThe game was tied!\n============================\n").to_stdout
+    end
   end
 end
