@@ -59,4 +59,13 @@ describe TicTacToe do
     end
   end
 
+  context "#computer_vs_computer" do
+    it "creates a game with two player objects" do
+      allow(tic_tac_toe).to receive(:who_goes_first)
+      tic_tac_toe.computer_vs_computer
+      expect(tic_tac_toe.game.player1).to be_a_kind_of(Computer)
+      expect(tic_tac_toe.game.player2).to be_a_kind_of(Computer)
+    end
+  end
+
 end
