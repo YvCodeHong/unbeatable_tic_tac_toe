@@ -23,6 +23,10 @@ class Game
     @board.show_board
   end
 
+  def illegal_moves(space)
+    @board.illegal_moves(space)
+  end
+
   def game_over?
     @board.game_over?
   end

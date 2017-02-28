@@ -7,8 +7,7 @@ class TicTacToe
 
   attr_accessor :game
 
-  def initialize(board = Board.new)
-    @board = board
+  def initialize
     @game = nil
     @line = "============================"
   end
@@ -41,11 +40,11 @@ class TicTacToe
   end
 
   def show_empty_board
-    puts "     #{@board.spaces[0]} | #{@board.spaces[1]} | #{@board.spaces[2]}"
+    puts "     0 | 1 | 2"
     puts "   -------------"
-    puts "     #{@board.spaces[3]} | #{@board.spaces[4]} | #{@board.spaces[5]}"
+    puts "     3 | 4 | 5"
     puts "   -------------"
-    puts "     #{@board.spaces[6]} | #{@board.spaces[7]} | #{@board.spaces[8]}"
+    puts "     6 | 7 | 8"
   end
 
   def show_board
@@ -111,25 +110,25 @@ class TicTacToe
 
 
   def two_player_game
-    @game = Game.new(Player.new("X"), Player.new("O"), @board)
+    @game = Game.new(Player.new("X"), Player.new("O"), Board.new)
     create_new_game("X")
   end
 
   def player_vs_computer_player_first
-    @game = Game.new(Player.new("X"), Computer.new("O"), @board)
+    @game = Game.new(Player.new("X"), Computer.new("O"), Board.new)
     puts "You are X, the computer is O"
     create_new_game("X")
   end
 
   def player_vs_computer_computer_first
-    @game = Game.new(Computer.new("X"), Player.new("O"), @board)
+    @game = Game.new(Computer.new("X"), Player.new("O"), Board.new)
     puts "The computer is X, you are O"
     create_new_game("X")
     computer_turn
   end
 
   def computer_vs_computer
-    @game = Game.new(Computer.new("X"), Computer.new("O"), @board)
+    @game = Game.new(Computer.new("X"), Computer.new("O"), Board.new)
     puts "X and O are both computer players"
     create_new_game("X")
   end
@@ -144,7 +143,7 @@ class TicTacToe
       space = gets.chomp
       if input_is_an_integer?(space)
         space = space.to_i
-        if @game.board.illegal_moves(space)
+        if @game.illegal_moves(space)
           puts "You can't go there. Try again!"
         else
           @game.play(space)

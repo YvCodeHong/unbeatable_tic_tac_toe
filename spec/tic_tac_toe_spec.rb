@@ -5,7 +5,6 @@ describe TicTacToe do
   subject(:tic_tac_toe) { described_class.new }
   let(:player1) { Player.new("X") }
   let(:player2) { Player.new("O") }
-  let(:board) { Board.new }
   let(:game) { Game.new(player1, player2, board)}
 
   context "#welcome" do
