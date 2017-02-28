@@ -93,8 +93,6 @@ describe TicTacToe do
       allow(tic_tac_toe).to receive(:create_new_game)
       expect { tic_tac_toe.who_goes_first }.to output("O goes first!\n").to_stdout
     end
-
-
   end
 
 end

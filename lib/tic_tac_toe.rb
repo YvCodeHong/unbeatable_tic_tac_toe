@@ -17,7 +17,7 @@ class TicTacToe
     welcome
     select_game_type
     until @game.game_over? do
-      take_turn if @player == "Player"
+      player_turn if @player == "Player"
       computer_turn if @opponent == "Computer"
     end
     end_of_game
@@ -126,11 +126,11 @@ class TicTacToe
   end
 
   def create_new_game(starting_player)
-@game.new_game(starting_player)
+    @game.new_game(starting_player)
   end
 
-  def take_turn
-    print "#{@game.current_player.marker}, which cell are you after?: "
+  def player_turn
+    player_turn_output
     loop do
       space = gets.chomp.to_i
       if @game.board.illegal_moves(space)
@@ -141,6 +141,10 @@ class TicTacToe
         break
       end
     end
+  end
+
+  def player_turn_output
+    print "#{@game.current_player.marker}, which cell are you after?: "
   end
 
   def computer_turn
