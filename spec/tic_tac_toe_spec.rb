@@ -106,6 +106,29 @@ describe TicTacToe do
       allow(tic_tac_toe).to receive(:gets).and_return('hello')
       expect { tic_tac_toe.player_turn }.to output("Not a number. Try again!\n").to_stdout
     end
+
+    it "Valid cell" do
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
+      tic_tac_toe.two_player_game
+      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      allow(tic_tac_toe).to receive(:loop).and_yield
+      allow(tic_tac_toe).to receive(:player_turn_output)
+      allow(tic_tac_toe).to receive(:gets).and_return('0')
+      expect { tic_tac_toe.player_turn }.to output("     O | 1 | 2\n   -------------\n     3 | 4 | 5\n   -------------\n     6 | 7 | 8\n").to_stdout
+    end
+
+    it "Taken cell" do
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
+      tic_tac_toe.two_player_game
+      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.play(0)
+      allow(tic_tac_toe).to receive(:loop).and_yield
+      allow(tic_tac_toe).to receive(:player_turn_output)
+      allow(tic_tac_toe).to receive(:gets).and_return('0')
+      expect { tic_tac_toe.player_turn }.to output("You can't go there. Try again!\n").to_stdout
+    end
+
+
   end
 
 end

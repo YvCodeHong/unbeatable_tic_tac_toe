@@ -144,7 +144,6 @@ class TicTacToe
         end
       else
         puts "Not a number. Try again!"
-        break
       end
     end
   end
