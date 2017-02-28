@@ -53,7 +53,7 @@ describe TicTacToe do
   context "#player_vs_computer" do
     it "creates a game with two player objects" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
-      tic_tac_toe.player_vs_computer
+      tic_tac_toe.player_vs_computer_player_first
       expect(tic_tac_toe.game.player1).to be_a_kind_of(Player)
       expect(tic_tac_toe.game.player2).to be_a_kind_of(Computer)
     end
@@ -79,18 +79,20 @@ describe TicTacToe do
     it "invalid selection" do
       allow(tic_tac_toe).to receive(:gets).and_return('hello')
       allow(tic_tac_toe).to receive(:loop).and_yield
-      expect { tic_tac_toe.who_goes_first }.to output("I didn't quite get that - X or O?\n").to_stdout
+      expect { tic_tac_toe.who_goes_first }.to output("I didn't quite get that - 1 or 2?\n").to_stdout
     end
 
-    it "X" do
-      allow(tic_tac_toe).to receive(:gets).and_return('X')
+    it "Player" do
+      allow(tic_tac_toe).to receive(:gets).and_return('1')
       allow(tic_tac_toe).to receive(:create_new_game)
-      expect { tic_tac_toe.who_goes_first }.to output("X goes first!\n").to_stdout
+        allow(tic_tac_toe).to receive(:player_vs_computer_player_first)
+      expect { tic_tac_toe.who_goes_first }.to output("You go first!\n").to_stdout
     end
 
-    it "O" do
-      allow(tic_tac_toe).to receive(:gets).and_return('O')
+    it "Computer" do
+      allow(tic_tac_toe).to receive(:gets).and_return('2')
       allow(tic_tac_toe).to receive(:create_new_game)
+
       expect { tic_tac_toe.who_goes_first }.to output("O goes first!\n").to_stdout
     end
   end

@@ -93,18 +93,18 @@ class TicTacToe
 
   def who_goes_first
     loop do
-      starting_player = gets.chomp.upcase
+      starting_player = gets.chomp.to_i
       case starting_player
-      when "X"
-        puts "X goes first!"
-        create_new_game(starting_player)
+      when 1
+        puts "You go first!"
+        player_vs_computer_player_first
         break
-      when "O"
-        puts "O goes first!"
+      when 2
+        puts "Computer goes first!"
         create_new_game(starting_player)
         break
       else
-        puts "I didn't quite get that - X or O?"
+        puts "I didn't quite get that - 1 or 2?"
       end
     end
   end
@@ -115,7 +115,7 @@ class TicTacToe
     create_new_game("X")
   end
 
-  def player_vs_computer
+  def player_vs_computer_player_first
     @game = Game.new(Player.new("X"), Computer.new("O"), @board)
     puts "You are X, the computer is O"
     create_new_game("X")
