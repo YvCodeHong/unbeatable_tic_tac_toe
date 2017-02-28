@@ -95,4 +95,16 @@ describe TicTacToe do
     end
   end
 
+
+  context "#player_turn" do
+    it "Invalid - text" do
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
+      tic_tac_toe.two_player_game
+      tic_tac_toe.game.new_game(player1)
+      allow(tic_tac_toe).to receive(:gets).and_return('hello')
+      allow(tic_tac_toe).to receive(:loop).and_yield
+      expect { tic_tac_toe.player_turn }.to output("You can't go there. Try again!\n").to_stdout
+    end
+  end
+
 end
