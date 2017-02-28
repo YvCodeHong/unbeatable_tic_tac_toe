@@ -70,7 +70,7 @@ class TicTacToe
         puts "Against the computer? You won't win!"
         @player = "Player"
         @opponent = "Computer"
-        player_vs_computer
+        who_goes_first_prompt
         break
       when 3
         puts "Watching two computers battle it out? Nice!"

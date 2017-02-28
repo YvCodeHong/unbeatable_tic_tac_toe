@@ -30,7 +30,7 @@ describe TicTacToe do
 
     it "2 - Player vs Computer" do
       allow(tic_tac_toe).to receive(:gets).and_return('2')
-      allow(tic_tac_toe).to receive(:player_vs_computer)
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       expect { tic_tac_toe.select_game_type }.to output("Against the computer? You won't win!\n").to_stdout
     end
 
