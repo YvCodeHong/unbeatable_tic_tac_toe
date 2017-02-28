@@ -12,8 +12,8 @@ class TicTacToe
   end
 
   def game_loop
-    puts @line
     welcome
+    select_game_type
     until @game.game_over? do
       take_turn if @player == "Player"
       computer_turn if @opponent == "Computer"
@@ -21,15 +21,13 @@ class TicTacToe
     end_of_game
   end
 
-  private
-
   def welcome
+    puts @line
     puts "Let's play Tic Tac Toe!"
     show_empty_board
     puts "Select 1 for a two player game"
     puts "Select 2 to play against the computer"
     puts "Select 3 for two computers to play against each other"
-    select_game_type
   end
 
   def end_of_game
