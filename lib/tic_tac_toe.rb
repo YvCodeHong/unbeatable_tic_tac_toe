@@ -132,15 +132,25 @@ class TicTacToe
   def player_turn
     player_turn_output
     loop do
-      space = gets.chomp.to_i
-      if @game.board.illegal_moves(space)
-        puts "You can't go there. Try again!"
+      space = gets.chomp
+      if input_is_an_integer?(space)
+        space = space.to_i
+        if @game.board.illegal_moves(space)
+          puts "You can't go there. Try again!"
+        else
+          @game.play(space)
+          show_board
+          break
+        end
       else
-        @game.play(space)
-        show_board
+        puts "Not a number. Try again!"
         break
       end
     end
+  end
+
+  def input_is_an_integer?(input)
+    /\A[+-]?\d+\z/ === input
   end
 
   def player_turn_output
