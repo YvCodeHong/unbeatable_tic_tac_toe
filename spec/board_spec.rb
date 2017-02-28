@@ -62,7 +62,6 @@ describe Board do
   context "Tied game" do
     it "checks if there are no more moves" do
       tied_game
-      p board 
       expect(board.tied?).to eq true
     end
 

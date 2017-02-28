@@ -134,8 +134,8 @@ class TicTacToe
     create_new_game("X")
   end
 
-  def create_new_game(starting_player)
-    @game.new_game(starting_player)
+  def create_new_game(starting_player_marker)
+    @game.new_game(starting_player_marker)
   end
 
   def player_turn
