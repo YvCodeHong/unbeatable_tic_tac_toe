@@ -174,4 +174,9 @@ class TicTacToe
   def computer_turn_output
     puts "The computer, #{@game.current_player.marker}, is thinking"
   end
+
+  trap "SIGINT" do
+    puts "See you next time!"
+    exit 130
+  end
 end

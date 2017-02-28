@@ -14,14 +14,14 @@ describe Computer do
   end
 
   context "feature testing" do
-    it "Can let player 1 start" do
+    xit "Can let player 1 start" do
       game.new_game("X")
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,9]
     end
 
-    it "computer can start" do
+    xit "computer can start" do
       game.new_game("O")
       game.play(computer.play(game))
       game.play(2)
@@ -30,14 +30,14 @@ describe Computer do
   end
 
   context "full game feature test - warning SLOW" do
-    it "Will play" do
+    xit "Will play" do
       game.new_game("X")
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,8]
     end
 
-    it "Will win the game" do
+    xit "Will win the game" do
       game.new_game("O")
       game.play(computer.play(game))
       game.play(8)
@@ -47,7 +47,7 @@ describe Computer do
       expect(game.show_board).to eq ["O", "O", "O", 3, 4, 5, 6, "X", "X"]
     end
 
-    it "Will keep player from winning" do
+    xit "Will keep player from winning" do
       game.new_game("X")
       game.play(0)
       game.play(computer.play(game))
