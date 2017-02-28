@@ -157,8 +157,12 @@ class TicTacToe
   end
 
   def computer_turn
-    puts "The computer, #{@game.current_player.marker}, is thinking"
+    computer_turn_output
     @game.play(@game.current_player.play(@game))
     show_board
+  end
+
+  def computer_turn_output
+    puts "The computer, #{@game.current_player.marker}, is thinking"
   end
 end

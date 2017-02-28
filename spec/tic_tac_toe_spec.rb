@@ -127,8 +127,19 @@ describe TicTacToe do
       allow(tic_tac_toe).to receive(:gets).and_return('0')
       expect { tic_tac_toe.player_turn }.to output("You can't go there. Try again!\n").to_stdout
     end
-
-
   end
 
+  context "#end_of_game" do
+    it "shows the winner when there is one" do
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
+      tic_tac_toe.two_player_game
+      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.play(0)
+      tic_tac_toe.game.play(6)
+      tic_tac_toe.game.play(1)
+      tic_tac_toe.game.play(7)
+      tic_tac_toe.game.play(2)
+      expect { tic_tac_toe.end_of_game }.to output("============================\nO is the winner!\n============================\n").to_stdout
+    end
+  end
 end
