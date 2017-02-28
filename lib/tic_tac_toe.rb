@@ -125,6 +125,7 @@ class TicTacToe
     @game = Game.new(Computer.new("X"), Player.new("O"), @board)
     puts "The computer is X, you are O"
     create_new_game("X")
+    computer_turn
   end
 
   def computer_vs_computer
