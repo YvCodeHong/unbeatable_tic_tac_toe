@@ -10,7 +10,7 @@ class Board
   end
 
   def take_turn(space, player)
-    return "Illegal move" if illegal_moves(space)
+    return false if illegal_moves(space)
     select_space(space, player)
   end
 

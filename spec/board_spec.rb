@@ -26,15 +26,15 @@ describe Board do
 
     it "should not allow the user to place their marker somewhere that has been taken" do
       board.take_turn(0, "X")
-      expect(board.take_turn(0, "O")).to eq "Illegal move"
+      expect(board.take_turn(0, "O")).to eq false
     end
 
     it "should not allow the user to place their marker somewhere that is not in the spaces array" do
-      expect(board.take_turn(9, "X")).to eq "Illegal move"
+      expect(board.take_turn(9, "X")).to eq false
     end
 
     it "should not allow the user to place their marker in a negative number" do
-      expect(board.take_turn(-1, "O")).to eq "Illegal move"
+      expect(board.take_turn(-1, "O")).to eq false
     end
   end
 
