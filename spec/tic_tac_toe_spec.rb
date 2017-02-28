@@ -69,10 +69,32 @@ describe TicTacToe do
   end
 
   context "#who_goes_first_prompt" do
-    it "invalid letter" do
-      allow(tic_tac_toe).to receive(:gets).and_return('hello')
+    it "displays the expected text" do
       allow(tic_tac_toe).to receive(:who_goes_first)
       expect { tic_tac_toe.who_goes_first_prompt }.to output("Who do you want to go first?\nX or O?\n").to_stdout
     end
   end
+
+  context "#who_goes_first" do
+    it "invalid selection" do
+      allow(tic_tac_toe).to receive(:gets).and_return('hello')
+      allow(tic_tac_toe).to receive(:loop).and_yield
+      expect { tic_tac_toe.who_goes_first }.to output("I didn't quite get that - X or O?\n").to_stdout
+    end
+
+    it "X" do
+      allow(tic_tac_toe).to receive(:gets).and_return('X')
+      allow(tic_tac_toe).to receive(:create_new_game)
+      expect { tic_tac_toe.who_goes_first }.to output("X goes first!\n").to_stdout
+    end
+
+    it "O" do
+      allow(tic_tac_toe).to receive(:gets).and_return('O')
+      allow(tic_tac_toe).to receive(:create_new_game)
+      expect { tic_tac_toe.who_goes_first }.to output("O goes first!\n").to_stdout
+    end
+
+
+  end
+
 end

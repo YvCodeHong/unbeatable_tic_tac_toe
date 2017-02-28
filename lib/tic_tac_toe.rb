@@ -113,16 +113,20 @@ class TicTacToe
       case starting_player
       when "X"
         puts "X goes first!"
-        @game.new_game(starting_player)
+        create_new_game(starting_player)
         break
       when "O"
         puts "O goes first!"
-        @game.new_game(starting_player)
+        create_new_game(starting_player)
         break
       else
         puts "I didn't quite get that - X or O?"
       end
     end
+  end
+
+  def create_new_game(starting_player)
+@game.new_game(starting_player)
   end
 
   def take_turn
