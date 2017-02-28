@@ -5,6 +5,8 @@ require_relative 'computer'
 
 class TicTacToe
 
+  attr_accessor :game
+
   def initialize(board = Board.new)
     @board = board
     @game = nil
