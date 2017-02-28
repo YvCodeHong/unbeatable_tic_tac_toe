@@ -49,11 +49,11 @@ class TicTacToe
   end
 
   def show_board
-    puts "     #{@game.board.spaces[0]} | #{@game.board.spaces[1]} | #{@game.board.spaces[2]}"
+    puts "     #{@game.show_board[0]} | #{@game.show_board[1]} | #{@game.show_board[2]}"
     puts "   -------------"
-    puts "     #{@game.board.spaces[3]} | #{@game.board.spaces[4]} | #{@game.board.spaces[5]}"
+    puts "     #{@game.show_board[3]} | #{@game.show_board[4]} | #{@game.show_board[5]}"
     puts "   -------------"
-    puts "     #{@game.board.spaces[6]} | #{@game.board.spaces[7]} | #{@game.board.spaces[8]}"
+    puts "     #{@game.show_board[6]} | #{@game.show_board[7]} | #{@game.show_board[8]}"
   end
 
   def select_game_type
