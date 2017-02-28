@@ -100,8 +100,8 @@ class TicTacToe
         player_vs_computer_player_first
         break
       when 2
-        puts "Computer goes first!"
-        create_new_game(starting_player)
+        puts "The computer goes first!"
+        player_vs_computer_computer_first
         break
       else
         puts "I didn't quite get that - 1 or 2?"
@@ -118,6 +118,12 @@ class TicTacToe
   def player_vs_computer_player_first
     @game = Game.new(Player.new("X"), Computer.new("O"), @board)
     puts "You are X, the computer is O"
+    create_new_game("X")
+  end
+
+  def player_vs_computer_computer_first
+    @game = Game.new(Computer.new("X"), Player.new("O"), @board)
+    puts "The computer is X, you are O"
     create_new_game("X")
   end
 

@@ -85,15 +85,15 @@ describe TicTacToe do
     it "Player" do
       allow(tic_tac_toe).to receive(:gets).and_return('1')
       allow(tic_tac_toe).to receive(:create_new_game)
-        allow(tic_tac_toe).to receive(:player_vs_computer_player_first)
+      allow(tic_tac_toe).to receive(:player_vs_computer_player_first)
       expect { tic_tac_toe.who_goes_first }.to output("You go first!\n").to_stdout
     end
 
     it "Computer" do
       allow(tic_tac_toe).to receive(:gets).and_return('2')
       allow(tic_tac_toe).to receive(:create_new_game)
-
-      expect { tic_tac_toe.who_goes_first }.to output("O goes first!\n").to_stdout
+      allow(tic_tac_toe).to receive(:player_vs_computer_computer_first)
+      expect { tic_tac_toe.who_goes_first }.to output("The computer goes first!\n").to_stdout
     end
   end
 
