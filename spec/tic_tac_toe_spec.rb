@@ -43,7 +43,7 @@ describe TicTacToe do
 
   context "#two_player_game" do
     it "creates a game with two player objects" do
-      allow(tic_tac_toe).to receive(:who_goes_first)
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
       expect(tic_tac_toe.game.player1).to be_a_kind_of(Player)
       expect(tic_tac_toe.game.player2).to be_a_kind_of(Player)
@@ -52,7 +52,7 @@ describe TicTacToe do
 
   context "#player_vs_computer" do
     it "creates a game with two player objects" do
-      allow(tic_tac_toe).to receive(:who_goes_first)
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.player_vs_computer
       expect(tic_tac_toe.game.player1).to be_a_kind_of(Player)
       expect(tic_tac_toe.game.player2).to be_a_kind_of(Computer)
@@ -61,11 +61,18 @@ describe TicTacToe do
 
   context "#computer_vs_computer" do
     it "creates a game with two player objects" do
-      allow(tic_tac_toe).to receive(:who_goes_first)
+      allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.computer_vs_computer
       expect(tic_tac_toe.game.player1).to be_a_kind_of(Computer)
       expect(tic_tac_toe.game.player2).to be_a_kind_of(Computer)
     end
   end
 
+  context "#who_goes_first_prompt" do
+    it "invalid letter" do
+      allow(tic_tac_toe).to receive(:gets).and_return('hello')
+      allow(tic_tac_toe).to receive(:who_goes_first)
+      expect { tic_tac_toe.who_goes_first_prompt }.to output("Who do you want to go first?\nX or O?\n").to_stdout
+    end
+  end
 end
