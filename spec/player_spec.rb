@@ -7,7 +7,7 @@ describe Player do
   let(:game) { Game.new(player1, player2, board)}
 
   context "#initialize" do
-    it "should take a marker when initialized" do
+    it "takes a marker when initialized" do
       expect(player1.marker).to eq "X"
     end
 
@@ -16,7 +16,7 @@ describe Player do
         expect(player1).to respond_to(:play).with(2).arguments
       end
 
-      it "affects the game" do
+      it "plays in the specified space" do
         game.new_game
         player1.play(game, 0)
         expect(game.show_board[0]).to eq "X"
