@@ -8,13 +8,13 @@ describe Computer do
 
 
   context "#initialize" do
-    it "should take a marker when initialized" do
+    it "takes a marker when initialized" do
       expect(computer.marker).to eq "O"
     end
   end
 
-  context "feature testing" do
-    xit "Can let player 1 start" do
+  context "feature testing - warning SLOW" do
+    xit "player can start" do
       game.new_game
       game.play(0)
       game.play(computer.play(game))
@@ -30,14 +30,14 @@ describe Computer do
   end
 
   context "full game feature test - warning SLOW" do
-    xit "Will play" do
+    xit "will play on it's turn" do
       game.new_game
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,8]
     end
 
-    xit "Will win the game" do
+    xit "will win the game" do
       game.new_game
       game.play(computer.play(game))
       game.play(8)
@@ -47,7 +47,7 @@ describe Computer do
       expect(game.show_board).to eq ["O", "O", "O", 3, 4, 5, 6, "X", "X"]
     end
 
-    xit "Will keep player from winning" do
+    xit "will keep player from winning" do
       game.new_game
       game.play(0)
       game.play(computer.play(game))
