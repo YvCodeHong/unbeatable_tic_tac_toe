@@ -111,30 +111,27 @@ class TicTacToe
 
   def two_player_game
     @game = Game.new(Player.new("X"), Player.new("O"), Board.new)
-    create_new_game("X")
+    create_new_game
   end
 
   def player_vs_computer_player_first
     @game = Game.new(Player.new("X"), Computer.new("O"), Board.new)
-    puts "You are X, the computer is O"
-    create_new_game("X")
+    create_new_game
   end
 
   def player_vs_computer_computer_first
     @game = Game.new(Computer.new("X"), Player.new("O"), Board.new)
-    puts "The computer is X, you are O"
-    create_new_game("X")
+    create_new_game
     computer_turn
   end
 
   def computer_vs_computer
     @game = Game.new(Computer.new("X"), Computer.new("O"), Board.new)
-    puts "X and O are both computer players"
-    create_new_game("X")
+    create_new_game
   end
 
-  def create_new_game(starting_player_marker)
-    @game.new_game(starting_player_marker)
+  def create_new_game
+    @game.new_game
   end
 
   def player_turn

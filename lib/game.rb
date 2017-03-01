@@ -11,8 +11,8 @@ class Game
     @winner = nil
   end
 
-  def new_game(first_player)
-    first_player == @player1.marker ? @current_player = @player1 : @current_player = @player2
+  def new_game
+     @current_player = @player1
   end
 
   def play(space)

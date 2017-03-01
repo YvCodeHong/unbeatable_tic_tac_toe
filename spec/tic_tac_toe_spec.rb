@@ -101,7 +101,7 @@ describe TicTacToe do
     it "Invalid - text" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
-      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.new_game
       allow(tic_tac_toe).to receive(:loop).and_yield
       allow(tic_tac_toe).to receive(:player_turn_output)
       allow(tic_tac_toe).to receive(:gets).and_return('hello')
@@ -111,17 +111,17 @@ describe TicTacToe do
     it "Valid cell" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
-      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.new_game
       allow(tic_tac_toe).to receive(:loop).and_yield
       allow(tic_tac_toe).to receive(:player_turn_output)
       allow(tic_tac_toe).to receive(:gets).and_return('0')
-      expect { tic_tac_toe.player_turn }.to output("     O | 1 | 2\n   -------------\n     3 | 4 | 5\n   -------------\n     6 | 7 | 8\n").to_stdout
+      expect { tic_tac_toe.player_turn }.to output("     X | 1 | 2\n   -------------\n     3 | 4 | 5\n   -------------\n     6 | 7 | 8\n").to_stdout
     end
 
     it "Taken cell" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
-      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.new_game
       tic_tac_toe.game.play(0)
       allow(tic_tac_toe).to receive(:loop).and_yield
       allow(tic_tac_toe).to receive(:player_turn_output)
@@ -134,19 +134,19 @@ describe TicTacToe do
     it "shows the winner when there is one" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
-      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.new_game
       tic_tac_toe.game.play(0)
       tic_tac_toe.game.play(6)
       tic_tac_toe.game.play(1)
       tic_tac_toe.game.play(7)
       tic_tac_toe.game.play(2)
-      expect { tic_tac_toe.end_of_game }.to output("============================\nO is the winner!\n============================\n").to_stdout
+      expect { tic_tac_toe.end_of_game }.to output("============================\nX is the winner!\n============================\n").to_stdout
     end
 
     it "alerts the user when there is a tie" do
       allow(tic_tac_toe).to receive(:who_goes_first_prompt)
       tic_tac_toe.two_player_game
-      tic_tac_toe.game.new_game(tic_tac_toe.game.player2)
+      tic_tac_toe.game.new_game
       tic_tac_toe.game.play(0)
       tic_tac_toe.game.play(8)
       tic_tac_toe.game.play(4)

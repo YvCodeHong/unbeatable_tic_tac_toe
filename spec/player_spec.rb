@@ -12,12 +12,12 @@ describe Player do
     end
 
     context "#play" do
-      it "has the ability to play the game" do
+      it "responds to method" do
         expect(player1).to respond_to(:play).with(2).arguments
       end
 
-      it "plays when is told to" do
-        game.new_game("X")
+      it "affects the game" do
+        game.new_game
         player1.play(game, 0)
         expect(game.show_board[0]).to eq "X"
       end
