@@ -15,6 +15,12 @@ describe Player do
       it "has the ability to play the game" do
         expect(player1).to respond_to(:play).with(2).arguments
       end
+
+      it "plays when is told to" do
+        game.new_game("X")
+        player1.play(game, 0)
+        expect(game.show_board[0]).to eq "X"
+      end
     end
   end
 end
