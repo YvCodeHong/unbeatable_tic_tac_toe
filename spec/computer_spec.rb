@@ -14,14 +14,14 @@ describe Computer do
   end
 
   context "feature testing - warning SLOW" do
-    xit "player can start" do
+    it "player can start" do
       game.new_game
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,9]
     end
 
-    xit "computer can start" do
+    it "computer can start" do
       game.new_game
       game.play(computer.play(game))
       game.play(2)
@@ -30,32 +30,31 @@ describe Computer do
   end
 
   context "full game feature test - warning SLOW" do
-    xit "will play on it's turn" do
+    it "will play on it's turn" do
       game.new_game
       game.play(0)
       game.play(computer.play(game))
       expect(game.show_board).not_to eq ["X",1,2,3,4,5,6,7,8]
     end
 
-    xit "will win the game" do
+    it "will win the game" do
       game.new_game
-      game.play(computer.play(game))
       game.play(8)
-      game.play(computer.play(game))
+      game.play(0)
+      game.play(5)
+      game.play(2)
       game.play(7)
       game.play(computer.play(game))
-      expect(game.show_board).to eq ["O", "O", "O", 3, 4, 5, 6, "X", "X"]
+      expect(game.show_board).to eq ["O", "O", "O", 3, 4, "X", 6, "X", "X"]
     end
 
-    xit "will keep player from winning" do
+    it "will keep player from winning" do
       game.new_game
+      game.play(8)
       game.play(0)
+      game.play(5)
       game.play(computer.play(game))
-      game.play(3)
-      game.play(computer.play(game))
-      expect(game.show_board).to eq ["X", 1, 2, "X", "O", 5, "O", 7, 8]
+      expect(game.show_board).to eq ["O", 1, "O", 3, 4, "X", 6, 7, "X"]
     end
   end
-
-
 end
