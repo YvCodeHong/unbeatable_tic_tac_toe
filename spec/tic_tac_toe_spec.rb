@@ -7,13 +7,6 @@ describe TicTacToe do
   let(:player2) { Player.new("O") }
   let(:game) { Game.new(player1, player2, board)}
 
-  context "#welcome" do
-    it "outputs a welcome when the game is run" do
-      expected_output = "============================\nLet's play Tic Tac Toe!\n     0 | 1 | 2\n   -------------\n     3 | 4 | 5\n   -------------\n     6 | 7 | 8\nSelect 1 for a two player game\nSelect 2 to play against the computer\nSelect 3 for two computers to play against each other\n"
-      expect { tic_tac_toe.welcome }.to output(expected_output).to_stdout
-    end
-  end
-
   context "#select_game_type" do
     it "responds when there is an invalid number" do
       allow(tic_tac_toe).to receive(:gets).and_return('42')
@@ -67,13 +60,6 @@ describe TicTacToe do
     end
   end
 
-  context "#who_goes_first_prompt" do
-    it "displays the expected text" do
-      allow(tic_tac_toe).to receive(:who_goes_first)
-      expect { tic_tac_toe.who_goes_first_prompt }.to output("Who do you want to go first?\nSelect 1 for player\nSelect 2 for computer\n").to_stdout
-    end
-  end
-
   context "#who_goes_first" do
     it "hanles an invalid selection" do
       allow(tic_tac_toe).to receive(:gets).and_return('hello')
@@ -81,7 +67,7 @@ describe TicTacToe do
       expect { tic_tac_toe.who_goes_first }.to output("I didn't quite get that - 1 or 2?\n").to_stdout
     end
 
-    it "hanles a player" do
+    it "handles a player" do
       allow(tic_tac_toe).to receive(:gets).and_return('1')
       allow(tic_tac_toe).to receive(:create_new_game)
       allow(tic_tac_toe).to receive(:player_vs_computer_player_first)

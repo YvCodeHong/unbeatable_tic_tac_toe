@@ -22,37 +22,12 @@ class TicTacToe
     end_of_game
   end
 
-  def welcome
-    puts @line
-    puts "Let's play Tic Tac Toe!"
-    show_empty_board
-    puts "Select 1 for a two player game"
-    puts "Select 2 to play against the computer"
-    puts "Select 3 for two computers to play against each other"
-  end
-
   def end_of_game
     @game.update_game_status
     puts @line
     @game.winner ? message = "#{@game.winner} is the winner!" : message = "The game was tied!"
     puts message
     puts @line
-  end
-
-  def show_empty_board
-    puts "     0 | 1 | 2"
-    puts "   -------------"
-    puts "     3 | 4 | 5"
-    puts "   -------------"
-    puts "     6 | 7 | 8"
-  end
-
-  def show_board
-    puts "     #{@game.show_board[0]} | #{@game.show_board[1]} | #{@game.show_board[2]}"
-    puts "   -------------"
-    puts "     #{@game.show_board[3]} | #{@game.show_board[4]} | #{@game.show_board[5]}"
-    puts "   -------------"
-    puts "     #{@game.show_board[6]} | #{@game.show_board[7]} | #{@game.show_board[8]}"
   end
 
   def select_game_type
@@ -83,32 +58,6 @@ class TicTacToe
     end
   end
 
-  def who_goes_first_prompt
-    puts "Who do you want to go first?"
-    puts "Select 1 for player"
-    puts "Select 2 for computer"
-    who_goes_first
-  end
-
-  def who_goes_first
-    loop do
-      starting_player = gets.chomp.to_i
-      case starting_player
-      when 1
-        puts "You go first!"
-        player_vs_computer_player_first
-        break
-      when 2
-        puts "The computer goes first!"
-        player_vs_computer_computer_first
-        break
-      else
-        puts "I didn't quite get that - 1 or 2?"
-      end
-    end
-  end
-
-
   def two_player_game
     @game = Game.new(Player.new("X"), Player.new("O"), Board.new)
     create_new_game
@@ -130,8 +79,22 @@ class TicTacToe
     create_new_game
   end
 
-  def create_new_game
-    @game.new_game
+  def who_goes_first
+    loop do
+      starting_player = gets.chomp.to_i
+      case starting_player
+      when 1
+        puts "You go first!"
+        player_vs_computer_player_first
+        break
+      when 2
+        puts "The computer goes first!"
+        player_vs_computer_computer_first
+        break
+      else
+        puts "I didn't quite get that - 1 or 2?"
+      end
+    end
   end
 
   def player_turn
@@ -151,6 +114,62 @@ class TicTacToe
         puts "Not a number. Try again!"
       end
     end
+  end
+
+  def who_goes_first
+    loop do
+      starting_player = gets.chomp.to_i
+      case starting_player
+      when 1
+        puts "You go first!"
+        player_vs_computer_player_first
+        break
+      when 2
+        puts "The computer goes first!"
+        player_vs_computer_computer_first
+        break
+      else
+        puts "I didn't quite get that - 1 or 2?"
+      end
+    end
+  end
+
+  private
+
+    def welcome
+      puts @line
+      puts "Let's play Tic Tac Toe!"
+      show_empty_board
+      puts "Select 1 for a two player game"
+      puts "Select 2 to play against the computer"
+      puts "Select 3 for two computers to play against each other"
+    end
+
+  def show_empty_board
+    puts "     0 | 1 | 2"
+    puts "   -------------"
+    puts "     3 | 4 | 5"
+    puts "   -------------"
+    puts "     6 | 7 | 8"
+  end
+
+  def show_board
+    puts "     #{@game.show_board[0]} | #{@game.show_board[1]} | #{@game.show_board[2]}"
+    puts "   -------------"
+    puts "     #{@game.show_board[3]} | #{@game.show_board[4]} | #{@game.show_board[5]}"
+    puts "   -------------"
+    puts "     #{@game.show_board[6]} | #{@game.show_board[7]} | #{@game.show_board[8]}"
+  end
+
+  def who_goes_first_prompt
+    puts "Who do you want to go first?"
+    puts "Select 1 for player"
+    puts "Select 2 for computer"
+    who_goes_first
+  end
+
+  def create_new_game
+    @game.new_game
   end
 
   def input_is_an_integer?(input)
