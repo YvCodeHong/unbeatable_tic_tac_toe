@@ -13,7 +13,7 @@ describe Player do
 
     context "#play" do
       it "has the ability to play the game" do
-        expect(player1).to respond_to(:play).with(1).argument
+        expect(player1).to respond_to(:play).with(2).arguments
       end
     end
   end
